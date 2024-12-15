@@ -1,0 +1,34 @@
+#!/usr/bin/make -f
+# debian/rules for the Debian libkrunfw package
+# Copyright © 2024 Andreas Schröder <andreas@kernelpanik.net>
+
+# Uncomment this to turn on verbose mode.
+export DH_VERBOSE=1
+
+# for some reason MAKEFLAGS was set to "w" in sub make execution
+MAKEFLAGS += --no-print-directory
+
+override_dh_auto_configure:
+	patch -p3 <debian/patches/0001-Revert-sommelier-bump-up-CROSS_DOMAIN_MAX_IDENTIFIER.patch 
+	patch -p3 <debian/patches/0002-vm_tools-sommelier-align-mem-operations-to-16K.patch 
+	patch -p3 <debian/patches/0003-vm_tools-sommelier-don-t-call-to-fixup_plane0.patch 
+	patch -p3 <debian/patches/0004-vm_tools-sommelier-Do-not-assert-on-unsued-wayland-i.patch
+
+override_dh_auto_build:
+	mkdir build
+	meson -Dxwayland_path=/usr/bin/Xwayland -Dgamepad=true -Dquirks=true -Dwith_tests=false build
+	ninja -C build
+
+# copy binaries from release target to expected place
+override_dh_install:
+	mkdir -p debian/sommelier/usr/bin
+	cp build/sommelier debian/sommelier/usr/bin/sommelier
+	dh_install -a
+
+override_dh_auto_clean:
+#	git reset --hard
+	rm -rf build
+	dh_clean
+
+%:
+	dh $@

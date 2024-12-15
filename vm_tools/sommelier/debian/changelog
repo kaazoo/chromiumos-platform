@@ -1,0 +1,14 @@
+sommelier (1.0-67bc17e-1asahi4.24.10) oracular; urgency=medium
+
+  * Build for oracular
+  * Based on commit 67bc17ea79b4ff1b449053e5fcf3375ff6b30690 of https://chromium.googlesource.com/chromiumos/platform2.git
+
+ -- Andreas Schröder <andreas@kernelpanik.net>  Thu, 5 Dec 2024 23:11:00 +0100
+
+
+sommelier (1.0-67bc17e-1asahi4.24.04) noble; urgency=medium
+
+  * Build for noble
+  * Based on commit 67bc17ea79b4ff1b449053e5fcf3375ff6b30690 of https://chromium.googlesource.com/chromiumos/platform2.git
+
+ -- Andreas Schröder <andreas@kernelpanik.net>  Thu, 5 Dec 2024 21:11:00 +0100

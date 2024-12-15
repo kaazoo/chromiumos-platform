@@ -1,0 +1,8 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: chromiumos-platform
+Source: https://chromium.googlesource.com/chromiumos/platform2
+
+Files: *
+Copyright: The ChromiumOS Authors
+License: BSD-like
+
